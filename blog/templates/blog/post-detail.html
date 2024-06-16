@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    This Post Title
+{% endblock title %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/post-detail.css" %}" />
+{% endblock css_files %}
+
+{% block content %}
+    <section id="summary">
+        <h2>Post Title</h2>
+        <article>
+            <img src="{% static "blog/images/mountains.jpg" %}" alt="Post title" />
+            <address>By Daniel</address>
+            <div>Last updated on <time>July 10th</time></div>
+        </article>
+    </section>
+
+    <main>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam laudantium debitis porro veritatis rerum. Quae exercitationem nulla a error, suscipit molestias aliquid temporibus labore minus distinctio cum ipsum, voluptatibus necessitatibus?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam laudantium debitis porro veritatis rerum. Quae exercitationem nulla a error, suscipit molestias aliquid temporibus labore minus distinctio cum ipsum, voluptatibus necessitatibus?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam laudantium debitis porro veritatis rerum. Quae exercitationem nulla a error, suscipit molestias aliquid temporibus labore minus distinctio cum ipsum, voluptatibus necessitatibus?
+        </p>
+    </main>
+{% endblock content %}
