@@ -16,7 +16,7 @@ class Author(models.Model):
 
 
 class Tag(models.Model):
-    caption = models.Charfield(max_length=20)
+    caption = models.CharField(max_length=20)
 
 
 class Post(models.Model):
@@ -27,8 +27,8 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     content = models.TextField(validators=[MinLengthValidator(10)])
     author = models.ForeignKey(
-        Author, on_delete=models.SET_NULL, related_name="posts")
-    tags = models.ManyToManyRel(Tag)
+        Author, on_delete=models.SET_NULL, related_name="posts", null=True)
+    tags = models.ManyToManyField(Tag)
 
     def get_absolute_url(self):
         return reverse("post-detail", kwargs=[self.slug])
