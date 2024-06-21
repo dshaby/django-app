@@ -1,7 +1,7 @@
 from typing import Any, Dict
 from django.views.generic import DetailView, ListView
 from .models import Post
-
+from .forms import CommentForm
 
 class StartingPageView(ListView):
     template_name = "blog/index.html"
@@ -29,4 +29,5 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["post_tags"] = self.object.tags.all()
+        context["comment_form"] = CommentForm()
         return context
