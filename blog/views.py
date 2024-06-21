@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Dict
 from django.views.generic import DetailView, ListView
 from .models import Post
 
@@ -26,7 +26,7 @@ class PostDetailView(DetailView):
     model = Post
     template_name = "blog/post-detail.html"
 
-    def get_context_data(self, **kwargs) -> dict[str, Any]:
+    def get_context_data(self, **kwargs) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["post_tags"] = self.object.tags.all()
         return context
