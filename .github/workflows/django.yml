@@ -27,6 +27,8 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Migrations
+      env:
+        SECRET_KEY: xb=s-p)bf#1$1!+shm!4qq32luc1i=%-5wgl7lfszxf_7#13&w
       run: |
         python manage.py migrate
       
