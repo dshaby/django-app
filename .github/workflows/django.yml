@@ -25,15 +25,22 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+      
+    - name: Set Environment Variables
+      run: |
+        echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> $GITHUB_ENV
+        echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> $GITHUB_ENV
+        echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> $GITHUB_ENV
+        echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
 
     - name: Run Migrations
       env:
-        SECRET_KEY: xb=s-p)bf#1$1!+shm!4qq32luc1i=%-5wgl7lfszxf_7#13&w
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         python manage.py migrate
       
     - name: Run Tests
       env:
-        SECRET_KEY: xb=s-p)bf#1$1!+shm!4qq32luc1i=%-5wgl7lfszxf_7#13&w
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         python manage.py test
